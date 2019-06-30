@@ -45,7 +45,7 @@ class crud
 			}
 		}
 
-		
+
 	}
 
 	public function insert()
@@ -57,8 +57,8 @@ class crud
 			'username_todo'	=> Session::get('id')
 		];
 
-		$sql = "INSERT INTO todo(message, data, username_todo) 
-				VALUES(:message, :data, :username_todo)";
+		$sql = "INSERT INTO todo(message, data, username_todo, done) 
+				VALUES(:message, :data, :username_todo, 1)";
 		$stmt = $this->db->prepare($sql);
 
 		if($stmt->execute($data)) {
@@ -126,6 +126,73 @@ class crud
 		return true;
 
 	}
+
+	public function updatedone($value, $id, $username)
+
+	{
+
+		$data = [
+			':value'		 => $value,
+			'id'			 => $id,
+			':username'		 => $username
+		];
+		$sql = "UPDATE todo SET done = :value WHERE id = :id AND username_todo = :username";
+		$stmt = $this->db->prepare($sql);
+		if($stmt->execute($data)){
+			return $this->addmessage('Marked as done !');
+		} 
+
+		return true;
+
+	}
+
+	public function selectdone($id)
+
+	{
+
+		$data = [
+			':username' => Session::get('id'),
+			':id' 	=> $id
+		];
+		$stmt = $this->db->prepare("SELECT done FROM todo WHERE username_todo = :username AND id = :id");
+		if($stmt->execute($data)){
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				return $row['done'];
+			}
+		}
+
+	}
+
+	public function deletelists()
+
+	{
+		$data = [
+			':username' => Session::get('id')
+		];
+		$sql = "DELETE FROM todo WHERE username_todo = :username";
+		$stmt = $this->db->prepare($sql);
+		if($stmt->execute($data)) {
+			$this->addmessage('Done !');
+		}
+	}
+
+	public function selecttoplists()
+
+	{
+		$stmt = $this->db->prepare("
+				SELECT username_todo, count(id) AS nr_todo
+				FROM todo
+				GROUP BY username_todo
+				ORDER BY nr_todo DESC;
+			");
+		if($stmt->execute()){
+			while ($row = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
+				return $row;
+			}
+		}
+
+	}
+
 
 	public function addmessage($message)
 

@@ -103,6 +103,24 @@ class QueryBuilder extends Input
 
 	}
 
+	public function selectmarks($table, $done)
+
+	{
+
+		$data = [
+			':username' => Session::get('id'),
+			':done'		=> $done
+		];
+		$stmt = $this->db->prepare("SELECT * FROM {$table} WHERE username_todo = :username AND done = :done");
+		$stmt->execute($data);
+		while ($row = $stmt->fetchAll()) {
+			return $row;
+		}	
+
+	}
+
+
+
 	public function successmessages() 
 
 	{

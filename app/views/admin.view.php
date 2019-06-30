@@ -43,6 +43,15 @@
 					<!--end button start bootstrap modal-->
 				</td>
 			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Settings</td>
+				<td>Top 10 users by number of rows.</td>
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" aria-pressed="false" autocomplete="off" data-target=".Show-top-users" >Show</button>
+					<!--end button start bootstrap modal-->
+				</td>
+			</tr>
 		</tbody>
 	</table>
 

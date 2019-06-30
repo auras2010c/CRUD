@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="http://localhost/public/">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="">Home<span class="sr-only">(current)</span></a>
       </li>
       <?php if(!Session::exists('id')) : ?>
       <li class="nav-item">
@@ -16,7 +16,6 @@
       <li class="nav-item">
         <a class="nav-link" href="register">Register</a>
       </li>
-      <li class="nav-item">
       <?php endif; ?>
         <a class="<?php if(Session::exists('id')) { ?> nav-link <?php }else{ ?> nav-link disabled <?php } ?>" href="todo">Todo APP</a>
       </li>

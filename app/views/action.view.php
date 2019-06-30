@@ -14,8 +14,10 @@
 <div class="login-page">
   <div class="form">
     <form class="login-form" method="POST" action="">
+      <p>You are going to edit this line, are you sure ?</p>
       <input type="text" name="todoedit" value="<?php echo $crud->selectedit($_GET['edit']);?>"/>
-      <button name="submit">edit</button>
+      <button name="submit">Yes, edit</button></br></br>
+      <a href="todo">Close</button>
     </form>
   </div>
 </div>
