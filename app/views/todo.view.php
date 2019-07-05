@@ -6,12 +6,18 @@ require 'partials/nav.php';
   <div class="container my-5">
    <div class="card-body text-center">
 
-    <h4 class="card-title">Bun venit, <?php echo $querybuilder->selectusername(Session::get('id')); ?></h4>
+    <h4 class="card-title">Bun venit, ~<?php echo $querybuilder->selectusername(Session::get('id')); echo '~'; 
+    if ($querybuilder->selectgroup(Session::get('id')) == 1) {
+      echo ' [Standard user]';
+    } else {
+      echo ' <a href="http://localhost/public/admin">[Administrator]</a>';
+    }
+    ?></h4>
     <p class="card-text">Astazi este: <?php echo date("Y-m-d") ?></p>
   </div>
   <div class="card">
-        <button type="button" data-toggle="modal" data-target=".options"><i class="fas fa-trash-alt"></i>More options..</a>
-      <button id="add__new__list" type="button" class="btn btn-success position-absolute" data-toggle="modal" data-target="#new-list"><i class="fas fa-plus"></i> Add a new List</button>
+        <button type="button" data-toggle="modal" data-target=".options"><i class="fas fa-trash-alt"></i>More options..</a> <!-- prelucrat pe partials/modals.php -->
+      <button id="add__new__list" type="button" class="btn btn-success position-absolute" data-toggle="modal" data-target="#new-list"><i class="fas fa-plus"></i> Add a new List</button> <!-- prelucrat pe controllers/todo.php -->
       <table class="table table-hover">
         <thead>
           <tr>
@@ -23,10 +29,9 @@ require 'partials/nav.php';
 
         </thead>
         <tbody>
-          <?php error_reporting(E_ERROR | E_PARSE); ?>
           <?php foreach($crud->select(Session::get('id')) as $rows) : ?>
             <tr>
-              <th scope="row">#</th>
+              <th scope="row">#</th> <!-- $rows['num']  -->
               <td> <?= $rows['data']; ?> </td>
               <td> 
 
@@ -40,8 +45,8 @@ require 'partials/nav.php';
               </td>
               <td>
                 <form action="action" method="GET">
-                  <button type="submit" name="edit" class="btn btn-sm btn-primary" value="<?= $rows['id']; ?>"><i class="far fa-edit"></i> edit</a>
-                    <button type="submit" name="delete" class="btn btn-sm btn-danger" value="<?= $rows['id']; ?>"><i class="fas fa-trash-alt"></i>delete</a>
+                  <button type="submit" name="edit" class="btn btn-sm btn-primary" value="<?= $rows['id']; ?>"><i class="far fa-edit"></i> edit</a> <!-- prelucrat pe controllers/action.php -->
+                    <button type="submit" name="delete" class="btn btn-sm btn-danger" value="<?= $rows['id']; ?>"><i class="fas fa-trash-alt"></i>delete</a> <!-- prelucrat pe controllers/action.php -->
                     </form>
                   </td>
                   <th>
@@ -51,6 +56,7 @@ require 'partials/nav.php';
                     </form>
                   </th>
                 <?php endforeach; ?>
+
               </tr>
             </tbody>
           </table>

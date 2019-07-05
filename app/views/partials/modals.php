@@ -14,10 +14,12 @@
 										<span>Your logo must have at least 20 characters.</span><br>
 										<label for="recipient-name" class="col-form-label">Type:</label>
 										<input type="text" class="form-control" id="recipient-name" name="logo">
+										<!-- logo mai sus -->
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 										<button type="submit" class="btn btn-primary" name='submit'>Change</button>
+										<!-- prelucrat pe admin.php -->
 									</div>
 								</form>
 							</div>
@@ -45,9 +47,10 @@
 										<label for="recipient-name" class="col-form-label">Type:</label>
 										<input type="text" class="form-control" id="recipient-name" name="title">
 									</div>
-									<div class="modal-footer">
+									<div class="modal-footer"> 
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 										<button type="submit" class="btn btn-primary" name='submit'>Change</button>
+										<!-- prelucrat pe admin.php -->
 									</div>
 								</form>
 							</div>
@@ -132,20 +135,22 @@
 									</tr>
 								</thead>
 								<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Delete all of your rows..</td>
-											<form action="" method="GET">
+									<tr>
+										<th scope="row">1</th>
+										<td>Delete all of your rows..</td>
+										<form action="" method="GET">
 											<td><button type="submit" name="deletetodos" value="success" class="btn btn-primary">Delete</button></td>
-											</form>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Filter your lists..</td>
-											<td><button type="submit" name="filterdone" value="success" class="btn btn-primary" data-toggle="modal" data-target=".doneitems">Done</button>
+										</form> <!-- prelucrat in controllers/todo.php -->
+									</tr>
+									<tr>
+										<th scope="row">2</th>
+										<td>Filter your lists..</td>
+										<td><button type="submit" name="filterdone" value="success" class="btn btn-primary" data-toggle="modal" data-target=".doneitems">Done</button>
+											<!-- prelucrat la linia 188 -->
 											<button type="submit" name="filterundone" value="success" class="btn btn-primary" data-toggle="modal" data-target=".undoneitems">Undone</button>
-											</td>
-										</tr>
+											<!-- prelucrat la linia 188 -->
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>

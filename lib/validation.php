@@ -83,10 +83,7 @@ class Validate
 							 	$this->addError("You need a valid {$item} !");
 							 }
 							break;
-						
-						default:
-							# code...
-							break;
+					
 
 					}
 				}
@@ -99,7 +96,7 @@ class Validate
 			$this->passed = true; 
 		}
 
-		return $this;
+		
 
 
 	}

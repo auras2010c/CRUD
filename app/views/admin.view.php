@@ -1,6 +1,6 @@
 	<?php require 'partials/head.php'; 
 	require 'partials/nav.php';
-	if(Input::exists()) : ?>
+	if(Input::exists()) : ?> <!-- afiseaza mesajul de succes-->
 		<br><div class="alert alert-primary text-center" role="alert">
 			<?php foreach($querybuilder->successmessages() as $row) : echo $row; endforeach;  ?>
 		</div>
@@ -22,7 +22,7 @@
 
 				<!--button-->
 				<td>
-					<button type="button" class="btn btn-primary" data-toggle="modal" aria-pressed="false" autocomplete="off" data-target="#Title-edit" >Edit</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" aria-pressed="false" autocomplete="off" data-target="#Title-edit" >Edit</button> <!-- prelucrat pe modals -->
 				</td>
 				<!--START 2nd button-->
 			</tr>

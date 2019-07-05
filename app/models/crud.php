@@ -33,6 +33,19 @@ class crud
 		data, message, id
 		from todo
 		WHERE username_todo = :username_todo;
+
+		/*
+		SELECT -- echivalentul in postgres 
+		   product_id,
+		   product_name,
+		   group_id,
+		   ROW_NUMBER () OVER (
+		      PARTITION BY group_id
+		      ORDER BY
+		         product_name
+		   )
+		FROM
+		   products;*/
 		";
 
 		$result = $this->db->prepare($sql);

@@ -1,7 +1,7 @@
 <?php 
 require '../core/bootstrap.php';
 if (!(Session::exists('id') && Session::exists('group') && Session::get('group') == 2)) {
-	Header("Location:http://localhost/public/");
+	Header("Location:http://localhost/public/login");
 	exit();
 } 
 if (Input::exists() && isset($_POST['submit']) && isset($_POST['title'])) {
